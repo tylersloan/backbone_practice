@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+  <title>backbone practice</title>
+</head>
+<style>
+
+body {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  font-family: Helvetica Neue;
+  font-weight: bolder;
+}
+
+button {
+  width: 50%;
+  padding: 25px 0px;
+  margin: 0 auto;
+  margin-top: 20px;
+  background-color: white;
+  border: 10px solid rgb(228,228,228);
+  color: rgb(228,228,228);
+  font-size: 14px;
+  font-weight: bolder;
+}
+
+button:hover {
+  border: 10px solid black;
+  color: black;
+}
+
+button.delete, button.edit, button.save, button.cancel {
+  width: 5%;
+  border: 3px solid rgb(228,228,228);
+  padding: 5px 0;
+  color: rgb(228,228,228);
+  font-size: 9px;
+  margin-top: 5px;
+}
+
+button.save, button.cancel {
+  width: auto;
+  padding: 5px 3%;
+}
+
+
+button.edit:hover, button.cancel:hover {
+  border: 3px solid black;
+  color: black;
+} 
+
+button.save:hover {
+  color: green;
+  border: 3px solid green;
+}
+
+button.delete:hover {
+  color: red;
+  border: 3px solid red;
+}
+
+ul {
+  width: 100%;
+  list-style: none;
+  text-align: left;
+  margin-left: 0;
+  padding: 0;
+}
+
+li {
+  line-height: 1.4;
+  margin: 0;
+  padding: 20px 0; 
+  border-bottom: 1px solid black;
+  display: block;
+}
+
+</style>
+<body>
+
+  <ul class="dogs"></ul>
+  <button>Add another fuckin' dog</button>
+
+  <!-- templates -->
+  <script id="dog-row-item-template" type="text/templates">
+    <div>
+      You have a dog named <%= name %>. He is <%= age %> years old.
+    </div>
+    <button class='edit'>Edit</button>
+    <button class='delete'>Kill it</button>
+  </script>
+
+  <script id="dog-row-item-edit-template" type="text/templates">
+    <div>
+      You have a dog named <input class='name-input' value='<%= name %>'/>.
+      He is <input class='age-input' value='<%= age %>'/> years old.
+      <button class='save'>Change him for good.</button>
+      <button class='cancel'>Nevermind</button>
+    </div>
+  </script>
+
+  <!-- Libraries -->
+  <script src="js/jquery-2.0.1.min.js"></script>
+  <script src="js/underscore.js"></script>
+  <script src="js/backbone.js"></script>
+
+  <!-- Models -->
+  <script src="models/dog_model.js"></script>
+
+  <!-- Collections -->
+  <script src="collections/dogs_collections.js"></script>
+  
+  <!-- Views -->
+  <script src="views/dog_row_item_view.js"></script>
+
+  <!-- Main -->
+  <script src="js/main.js"></script>
+  
+</body>
+</html>
