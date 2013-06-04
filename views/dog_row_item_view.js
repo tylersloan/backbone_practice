@@ -25,7 +25,7 @@ DogRowItemView = Backbone.View.extend({
   },
 
   delete: function(){
-    // removes the model from teh collection
+    // removes the model from the collection
     this.model.destroy();
     // removes the view el and its bindings
     this.remove();

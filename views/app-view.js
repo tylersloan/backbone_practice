@@ -1,8 +1,18 @@
 AppView = Backbone.View.extend({
+  
+  events: {
+    'click .add-dog': 'showNewDogForm',
+    'click .save-dog': 'saveNewDog',
+    'click .cancel': 'cancel',
+  },
+
   initialize: function() {
-    // store references to underscorw templates
+    // store references to underscore templates
     dogRowItemTemplate = _.template( $('#dog-row-item-template').html() );
     dogRowItemEditTemplate = _.template( $('#dog-row-item-edit-template').html() );
+    newDogFormTemplate = _.template( $('#new-dog-form-template').html() );
+    appTemplate = _.template( $('#app-template').html() );
+
 
     // create the collection of dogs
     myDogs = new Dogs();
@@ -25,7 +35,30 @@ AppView = Backbone.View.extend({
       {name: 'George Michael'},
       {name: 'Buster'}
     ]);
+  this.render();
+  },
 
+  render: function() {
+    // Inject empty div into .container
+    // The view will always remember
+    $('.container').html(this.el);
+    // appTemplate is inserted into the empty div
+    this.$el.html( appTemplate() );
+  },
+
+  cancel: function() {
+    this.$el.html( appTemplate() );
+  },
+  
+  showNewDogForm: function() {
+    this.$el.html( newDogFormTemplate() )
+  },
+
+  saveNewDog: function() {
+    myDogs.add({
+      name: this.$el.find('.name-input').val(),
+      age: this.$el.find('.age-input').val()
+    });
   }
 });
 

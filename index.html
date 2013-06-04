@@ -7,7 +7,7 @@
 
 body {
   width: 80%;
-  margin: 0 auto;
+  margin: 5%;
   text-align: center;
   font-family: Helvetica Neue;
   font-weight: bolder;
@@ -30,7 +30,7 @@ button:hover {
   color: black;
 }
 
-button.delete, button.edit, button.save, button.cancel {
+button.delete, button.edit, button.save, button.cancel, button.save-dog {
   width: auto;
   border: 3px solid rgb(228,228,228);
   padding: 5px 2%;
@@ -39,7 +39,7 @@ button.delete, button.edit, button.save, button.cancel {
   margin-top: 5px;
 }
 
-button.save, button.cancel {
+button.save, button.cancel, button.save-dog {
   width: auto;
   padding: 5px 3%;
 }
@@ -50,7 +50,7 @@ button.edit:hover, button.cancel:hover {
   color: black;
 } 
 
-button.save:hover {
+button.save:hover, button.save-dog:hover {
   color: green;
   border: 3px solid green;
 }
@@ -80,9 +80,23 @@ li {
 <body>
 
   <ul class="dogs"></ul>
-  <button>Add another fuckin' dog</button>
+  <div class="container"></div>
 
   <!-- templates -->
+
+  <script id="app-template" type="text/template">
+    <button class="add-dog">Add another dog</button>
+  </script>
+
+  <script id="new-dog-form-template" type="text/template">
+    <div>
+      You have a new dog named <input class='name-input'/>.<br/>
+      This dog is <input class='age-input'/> years old.<br/>
+      <button class='save-dog'>Keep this new dog.</button>
+      <button class='cancel'>Nevermind</button>
+    </div>
+  </script>
+  
   <script id="dog-row-item-template" type="text/templates">
     <div>
       You have a dog named <%= name %>. He is <%= age %> years old.
